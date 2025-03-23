@@ -216,3 +216,28 @@ string_length = 8
 unique_strings = generate_unique_random_strings(num_strings_to_generate, string_length)
 
 print(unique_strings)
+import random
+import string
+
+def generate_unique_random_strings(num_strings, string_length):
+    """
+    Generates a list of unique random strings.
+
+    Args:
+        num_strings: The number of random strings to generate.
+        string_length: The length of each random string.
+
+    Returns:
+        A list of unique random strings.
+    """
+    string_list = set()
+    while len(string_list) < num_strings:
+        random_string = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(string_length))
+        string_list.add(random_string)
+    return list(string_list)
+
+# Example usage:
+num_strings = 5
+string_length = 10
+unique_strings = generate_unique_random_strings(num_strings, string_length)
+print(unique_strings)
