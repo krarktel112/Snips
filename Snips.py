@@ -196,3 +196,23 @@ with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
     print(string_set) # Output: {'h', 'e', 'l', 'o'}
     empty_set = set()
     print(empty_set)  # Output: set()
+import random
+import string
+
+def generate_random_string(length=10):
+  characters = string.ascii_letters + string.digits
+  return ''.join(random.choice(characters) for i in range(length))
+
+def generate_unique_random_strings(num_strings, string_length=10):
+  generated_strings = set()
+  while len(generated_strings) < num_strings:
+    new_string = generate_random_string(string_length)
+    generated_strings.add(new_string)
+  return list(generated_strings)
+
+# Example usage:
+num_strings_to_generate = 5
+string_length = 8
+unique_strings = generate_unique_random_strings(num_strings_to_generate, string_length)
+
+print(unique_strings)
